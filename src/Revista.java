@@ -32,7 +32,7 @@ public class Revista extends Producto {
     public double calcularPrecioFinal(){
         double precioFinal = getPrecioBase();
         if(tieneEtiqueta("oferta")){
-            precioFinal = getPrecioBase() - (getPrecioBase() * 0.85);
+            precioFinal = getPrecioBase() - (getPrecioBase() * 0.15);
         }
         return precioFinal;
     }

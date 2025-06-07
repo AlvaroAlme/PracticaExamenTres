@@ -106,7 +106,7 @@ En la clase principal `TiendaDigitalApp`, haz lo siguiente:
         
     -   Precio promedio
         
-    -   El más caro y el más barato (usando `stream().max()` y `stream().min()`)
+    -   El más caro y el más barato
         
 -   Recorre todos los productos y:
     
@@ -134,7 +134,7 @@ Deberás parsear el archivo y construir cada tipo de producto correctamente.
 
 ### **6. Extras Opcionales para Nota Adicional**
 
--   Permite buscar productos por etiqueta desde consola (ej. `"premium"`) y mostrarlos con stream+filter.
+-   Permite buscar productos por etiqueta desde consola (ej. `"premium"`)
     
 -   Ordena todos los productos por precio final y guárdalos en un archivo `ordenados.txt`.
    
