@@ -3,7 +3,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +20,8 @@ public class TiendaDigitalApp {
                 String[] partes = linea.split(";");
                 Producto producto = null;
                 String tipoProducto = partes[0];
+                String[] parteEtiquetas = partes[partes.length - 1].split("=");
+                String[] etiquetas = parteEtiquetas[parteEtiquetas.length - 1].split(",");
 
                 switch (tipoProducto) {
                     case "Libro":
@@ -29,10 +30,10 @@ public class TiendaDigitalApp {
                         libro.setNumPaginas(Integer.parseInt(partes[5]));
                         crearProducto(libro, partes[1], partes[2], Double.parseDouble(partes[3]));
 
-                        if(partes[partes.length - 1].contains("premium")){
-                            libro.tieneEtiqueta("premium");
+                        for(int i = 0; i < etiquetas.length; i++){
+                            libro.aniadirEtiqueta(etiquetas[i]);
                         }
-
+                        
                         producto = libro;
                         break;
 
@@ -42,8 +43,8 @@ public class TiendaDigitalApp {
                         revista.setMes(partes[5]);
                         crearProducto(revista, partes[1], partes[2], Double.parseDouble(partes[3]));
 
-                        if(partes[partes.length - 1].contains("ofertta")){
-                            revista.tieneEtiqueta("oferta");
+                        for(int i = 0; i < etiquetas.length; i++){
+                            revista.aniadirEtiqueta(etiquetas[i]);
                         }
                         producto = revista;
                         break;
@@ -53,9 +54,10 @@ public class TiendaDigitalApp {
                         ebook.setTamanioMB(Double.parseDouble(partes[4]));
                         crearProducto(ebook, partes[1], partes[2], Double.parseDouble(partes[3]));
 
-                        if(partes[partes.length - 1].contains("nuevo")){
-                            ebook.tieneEtiqueta("nuevo");
+                        for(int i = 0; i < etiquetas.length; i++){
+                            ebook.aniadirEtiqueta(etiquetas[i]);
                         }
+                        
                         producto = ebook;
                         break;
 
